@@ -1,4 +1,5 @@
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Ioc;
 using SampleMvvmLightProject.Model;
 
 namespace SampleMvvmLightProject.ViewModel
@@ -13,17 +14,7 @@ namespace SampleMvvmLightProject.ViewModel
         /// </summary>
         public MainViewModel()
         {
-            if (IsInDesignMode)
-            {
-                // code runs in blend --> create design time data.
-                model = new DesignTimeModel();
-            }
-            else
-            {
-                // code runs "for real"
-                model = new RunTimeModel();
-            }
-
+            model = SimpleIoc.Default.GetInstance<IModel>();
             SomeText = model.SomeText;
         }
 
